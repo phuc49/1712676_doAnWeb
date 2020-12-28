@@ -2701,3 +2701,9 @@ form textarea {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+
+
+
+.error_msg{
+  color: red;
+}

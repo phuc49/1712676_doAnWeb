@@ -13,7 +13,7 @@
   <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/cerulean/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.js">
   <!-- Font Awesome -->
  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
@@ -26,6 +26,8 @@
   <!-- CUSTOM CSS -->
   <link href="/stylesheets/style.css" rel="stylesheet">
 
+
+  <script src="/javascripts/ham.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,20 +56,12 @@
 							</li>
               
               <li class="nav-item active">
-								<a class="nav-link" href="/sp?">Sản phẩm</a>
+								<a class="nav-link" href="/product">Sản phẩm</a>
 							</li>
 
 							<li class="nav-item dropdown dropdown-slide">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Giỏ hàng<span><i class="fa fa-angle-down"></i></span>
 								</a>
-
-								<!-- Dropdown list -->
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="dashboard.html">Giỏ hàng</a>
-									<a class="dropdown-item" href="dashboard-my-ads.html">Sản phẩm đã mua</a>
-									<a class="dropdown-item" href="dashboard-favourite-ads.html">Sản phẩm yêu thích</a>
-
-								</div>
 							</li>
 							
 							<li class="nav-item dropdown dropdown-slide">
@@ -93,7 +87,7 @@
 								<a class="nav-link login-button" href="/login">Đăng nhập</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-white add-button" href="/register"><i class="fa fa-plus-circle"></i> Đăng ký</a>
+								<a class="nav-link text-white add-button" href="/users/register"><i class="fa fa-plus-circle"></i> Đăng ký</a>
 							</li>
 						</ul>
 					</div>
@@ -211,21 +205,22 @@
 </footer>
 
 <!-- JAVASCRIPTS -->
-<script src="plugins/jQuery/jquery.min.js"></script>
-<script src="plugins/bootstrap/js/popper.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
+<script src="/plugins/jQuery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/popper.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap-slider.js"></script>
   <!-- tether js -->
-<script src="plugins/tether/js/tether.min.js"></script>
-<script src="plugins/raty/jquery.raty-fa.js"></script>
-<script src="plugins/slick-carousel/slick/slick.min.js"></script>
-<script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-<script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
-<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+<script src="/plugins/tether/js/tether.min.js"></script>
+<script src="/plugins/raty/jquery.raty-fa.js"></script>
+<script src="/plugins/slick-carousel/slick/slick.min.js"></script>
+<script src="/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="/plugins/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
 <!-- google map -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-<script src="plugins/google-map/gmap.js"></script>
+<script src="/plugins/google-map/gmap.js"></script>
 <script src="/javascripts/script.js"></script>
+
 
   </body>
 </html>

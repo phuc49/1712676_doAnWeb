@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var sp = require('../controller/sp.controller');
+var product = require('../controller/product');
 
 
 /* GET home page. 
@@ -9,6 +9,6 @@ router.get('/', function(req, res, next) {
 });
 */
 
-router.get("/", sp.index);
+router.get("/", product.index);
 
 module.exports = router;
