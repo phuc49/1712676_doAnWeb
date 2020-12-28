@@ -11,15 +11,16 @@ const index = async (req, res, next) => {
   res.render("index", { dssp });
 };
 
+
+
 const all = async (req, res, next) => {
   let qs = { ...req.query };
   //const q = queryString.stringify(qs);
-  console.log(qs);
   /// phân trang
   let page = +req.query.page || 1;
   const limit = +req.query.page_size || 12;
-  const { category: category_id, name, price, discount } = req.query;
-  console.log({ category: category_id, name, price, discount });
+  const { category: category_id, name, price, discount, orderBy } = req.query;
+
   const count = await model.count({ category_id, name, price, discount });
   lastPage = Math.ceil(count[0].sl / limit);
   qs.page = lastPage;
@@ -35,16 +36,16 @@ const all = async (req, res, next) => {
       active: i === page,
       page: i,
     });
-    console.log(pageList);
   }
 
   delete qs.page;
-  console.log(page);
+  delete qs.orderBy;
   const dssp = await model.all(page - 1, limit, {
     category_id,
     name,
     price,
-    discount
+    discount,
+    orderBy 
   });
   const dsl = await loai.all();
   res.render("dssp", {
@@ -52,7 +53,7 @@ const all = async (req, res, next) => {
     pageList,
     lastPageQs,
     dsl,
-    qs: queryString.stringify(qs),
+    qs: queryString.stringify(qs)
   });
 };
 const singleID = async (req, res, next) => {

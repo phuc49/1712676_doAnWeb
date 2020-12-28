@@ -27,7 +27,9 @@ module.exports = {
              FROM ${TABLE}
              ORDER BY buys DESC
              LIMIT 20 `),
-  all: (offset, limit, { name, category_id, price, discount }) => {
+
+
+  all: (offset, limit, { name, category_id, price, discount, orderBy }) => {
     let condition = "";
     let params = [];
     if (name) {
@@ -38,21 +40,31 @@ module.exports = {
         `%${name}%`
       );
     }
-    condition = buildCondition(
-      condition,
-      params,
-      ` AND category_id = ?`,
-      category_id
-    );
+    condition = buildCondition(condition, params, ` AND category_id = ?`, category_id);
     condition = buildCondition(condition, params, ` AND price <= ?`, price);
     condition = buildCondition(condition, params, ` AND discount >= ?`, discount);
 
-    params.push(offset * limit, limit);
+    var order = "p.buys DESC";
+    if(orderBy == "highestPrice"){
+      order = "p.price DESC";
+    }
+    else if(orderBy == "lowestPrice"){
+      order = "p.price ASC";
+    }
 
+
+    params.push(offset * limit, limit);
+console.log(`SELECT ${viewFields}
+FROM ${TABLE}
+WHERE 1 = 1 ${condition}
+ORDER BY ${order} 
+LIMIT ?,?`,
+params);
     return db.load(
       `SELECT ${viewFields}
        FROM ${TABLE}
        WHERE 1 = 1 ${condition}
+       ORDER BY ${order} 
        LIMIT ?,?`,
       params
     );
