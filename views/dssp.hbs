@@ -6,29 +6,30 @@
 				<div class="advance-search">
 					<form method="GET">
 						<div class="form-row">
-							<div class="form-group col-md-4">
+							<div class="form-group col-md-3">
 								<input type="text" class="form-control my-2 my-lg-0" id="input" name="name"
 									placeholder="Bạn cần tìm gì" value="{{name}}">
 							</div>
 
 
-							<div class="form-group col-md-3">
-								<select id="inputState5" class="form-control my-2 my-lg-0" selected="{{name}}">
-									<option >Tất cả</option>
-                                {{#each dsl}}
-                                    
-                                    <option values = "{{id}}">{{name}}</option>
-                                
-                                {{/each}}
-                            </select>
+							<div class="form-group col-md-3 select-category">
+								<select class="form-control my-2 my-lg-0" selected="{{name}}" name="category">
+									<option value="">Tất cả</option>
+									{{#each dsl}}
+									<option value="{{id}}">{{name}}</option>
+									{{/each}}
+								</select>
 							</div>
 
-							<div class="form-group col-md-3">
+							<div class="form-group col-md-2">
 								<input type="text" class="form-control my-2 my-lg-0" id="inputLocation4"
 									placeholder="Giá" name="price" value="{{price}}">
 							</div>
 							<div class="form-group col-md-2">
-
+								<input type="text" class="form-control my-2 my-lg-0" id="inputLocation4"
+									placeholder="Giảm giá (%)" name="discount" value="{{discount}}">
+							</div>
+							<div class="form-group col-md-2">
 								<button type="submit" class="btn btn-primary">Tìm kiếm</button>
 							</div>
 						</div>
@@ -40,14 +41,7 @@
 </section>
 <section class="section-sm">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="search-result bg-gray">
-					<h2>Kết quả tìm kiếm "..."</h2>
-					<p>123 Results on 12 December, 2017</p>
-				</div>
-			</div>
-		</div>
+
 		<div class="row">
 			<div class="col-md-3">
 				<div class="category-sidebar">
@@ -61,29 +55,18 @@
 					</div>
 
 
-					<div class="widget filter">
-						<h4 class="widget-header">Top sản phẩm</h4>
-						<select>
-							<option>Phổ biến</option>
-							<option value="1">Được đánh giá cao</option>
-							<option value="2">Giá thấp nhất</option>
-							<option value="4">Giá cao nhất</option>
-						</select>
-					</div>
-
-					
 				</div>
 			</div>
 			<div class="col-md-9">
 				<div class="category-search-filter">
 					<div class="row">
 						<div class="col-md-6">
-							<strong>Short</strong>
-							<select>
-								<option>Most Recent</option>
-								<option value="1">Most Popular</option>
-								<option value="2">Lowest Price</option>
-								<option value="4">Highest Price</option>
+							<strong>Sắp xếp</strong>
+							<select name="orderBy">
+								<option>Sản phẩm phổ biến nhất</option>
+								<option value="1">Giá thấp nhất</option>
+								<option value="2">Giá cao nhất</option>
+
 							</select>
 						</div>
 
@@ -100,12 +83,12 @@
 									<div class="thumb-content">
 										<!-- <div class="price">$200</div> -->
 										<a href="/product/{{product_id}}">
-											<img class="card-img-top img-fluid" src="{{image}}"
-												alt="Card image cap">
+											<img class="card-img-top img-fluid" src="{{image}}" alt="Card image cap">
 										</a>
 									</div>
 									<div class="card-body">
-										<h4 class="card-title"><a href="/product/{{product_id}}">{{product_name}}</a></h4>
+										<h4 class="card-title"><a href="/product/{{product_id}}">{{product_name}}</a>
+										</h4>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
 												<a href="/product/{{product_id}}"><i
@@ -116,7 +99,7 @@
 											</li>
 										</ul>
 										<p class="card-text">{{description}}</p>
-										
+
 									</div>
 								</div>
 							</div>
@@ -135,9 +118,9 @@
 							</li>
 							{{#each pageList}}
 							{{#if active}}
-							    <li class="page-item active"><a class="page-link" href="?{{qs}}">{{page}}</a></li>
+							<li class="page-item active"><a class="page-link" href="?{{qs}}">{{page}}</a></li>
 							{{else}}
-							    <li class="page-item"><a class="page-link" href="?{{qs}}">{{page}}</a></li>
+							<li class="page-item"><a class="page-link" href="?{{qs}}">{{page}}</a></li>
 							{{/if}}
 							{{/each}}
 							<li class="page-item">

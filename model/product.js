@@ -27,7 +27,7 @@ module.exports = {
              FROM ${TABLE}
              ORDER BY buys DESC
              LIMIT 20 `),
-  all: (offset, limit, { name, category_id, price }) => {
+  all: (offset, limit, { name, category_id, price, discount }) => {
     let condition = "";
     let params = [];
     if (name) {
@@ -45,8 +45,8 @@ module.exports = {
       category_id
     );
     condition = buildCondition(condition, params, ` AND price <= ?`, price);
+    condition = buildCondition(condition, params, ` AND discount >= ?`, discount);
 
-    console.log(offset,limit)
     params.push(offset * limit, limit);
 
     return db.load(
@@ -57,7 +57,7 @@ module.exports = {
       params
     );
   },
-  count: ({ name, category_id, price }) => {
+  count: ({ name, category_id, price, discount }) => {
     let condition = "";
     let params = [];
     if (name) {
@@ -75,6 +75,7 @@ module.exports = {
       category_id
     );
     condition = buildCondition(condition, params, ` AND price <= ?`, price);
+    condition = buildCondition(condition, params, ` AND discount >= ?`, discount);
 
     return db.load(
       `SELECT COUNT(*) AS sl 
@@ -82,14 +83,4 @@ module.exports = {
       params
     );
   },
-  // allByCategory: (category, offset,limit)=>db.load(`SELECT ${viewFields}
-  //                                                   FROM ${TABLE}
-  //                                                   WHERE  p.category_id = ${category}
-  //                                                   LIMIT ?,?`,[offset * limit, limit]),
-  // countByCategory: (category) => db.load(`SELECT COUNT(*) AS sl FROM products WHERE id = ${category}`),
-  // allByName: (productName, offset,limit)=>db.load(`SELECT ${viewFields}
-  //                                                  FROM ${TABLE}
-  //                                                  WHERE p.name LIKE '%${productName}%'
-  //                                                  LIMIT ?,?`,[offset * limit, limit]),
-  // countByName: (productName) => db.load(`SELECT COUNT(*) AS sl FROM products WHERE name LIKE '%${productName}%'`)
 };

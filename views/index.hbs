@@ -1,4 +1,3 @@
-
 <!--===============================
 =            Hero Area            =
 ================================-->
@@ -16,7 +15,8 @@
 						<h2>Mặt hàng thông dụng</h2>
 						<ul class="list-inline">
 							<li class="list-inline-item">
-								<a href="dssp"><i class="fas fa-laptop"></i> Điện tử</a></li>
+								<a href="dssp"><i class="fas fa-laptop"></i> Điện tử</a>
+							</li>
 							<li class="list-inline-item">
 								<a href="dssp"><i class="fas fa-tshirt"></i> Thời trang</a>
 							</li>
@@ -31,38 +31,49 @@
 							</li>
 						</ul>
 					</div>
-					
+
 				</div>
 				<!-- Advance Search -->
 				<div class="advance-search">
-						<div class="container">
-							<div class="row justify-content-center">
-								<div class="col-lg-12 col-md-12 align-content-center">
-										<form method="GÉT">
-											<div class="form-row">
-												<div class="form-group col-md-4">
-													<input type="text" class="form-control my-2 my-lg-1" id="ten" value="{{name}}" placeholder="Bạn cần tìm gì?">
-												</div>
-												<div class="form-group col-md-3">
-													<select class="w-100 form-control mt-lg-1 mt-md-2">
-														<option>Loại sản phẩm</option>
-														<option value="1">Bán chạy nhất</option>
-														<option value="2">Giá thấp nhất</option>
-														<option value="4">Giá cao nhất</option>
-													</select>
-												</div>
-												<div class="form-group col-md-3">
-													<input type="text" class="form-control my-2 my-lg-1" id="inputLocation4" placeholder="Giá">
-												</div>
-												<div class="form-group col-md-2 align-self-center">
-													<button type="submit" class="btn btn-primary">Tìm kiếm</button>
-												</div>
-											</div>
-										</form>
-								</div>
+					<div class="container">
+						<div class="row justify-content-center">
+							<div class="col-lg-12 col-md-12 align-content-center">
+								<form method="GET" action="/product/">
+									<div class="form-row">
+										<div class="form-group col-md-3">
+											<input type="text" class="form-control my-2 my-lg-0" id="input" name="name"
+												placeholder="Bạn cần tìm gì" value="{{name}}">
+										</div>
+
+
+										<div class="form-group col-md-3 select-category">
+											<select class="form-control my-2 my-lg-0" selected="{{name}}"
+												name="category">
+												<option value="">Tất cả</option>
+												{{#each dsl}}
+												<option value="{{id}}">{{name}}</option>
+												{{/each}}
+											</select>
+										</div>
+
+										<div class="form-group col-md-2">
+											<input type="text" class="form-control my-2 my-lg-0" id="inputLocation4"
+												placeholder="Giá" name="price" value="{{price}}">
+										</div>
+										<div class="form-group col-md-2">
+											<input type="text" class="form-control my-2 my-lg-0" id="inputLocation4"
+												placeholder="Giảm giá (%)" name="discount" value="{{discount}}">
+										</div>
+										<div class="form-group col-md-2">
+
+											<button type="submit" class="btn btn-primary">Tìm kiếm</button>
+										</div>
+									</div>
+								</form>
 							</div>
-					    </div>
-				</div>	
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -90,49 +101,50 @@
 		</div>
 		<div class="row">
 			<!-- offer 01 -->
-          
+
 			<div class="col-lg-12">
 				<div class="trending-ads-slide">
 					{{#each dssp}}
 					<div class="col-sm-12 col-lg-4">
 
-                        <div class="product-item bg-light">
-	                        <div class="card">
-        
-		                        <div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			                        <a href= "/product/{{product_id}}" >
-				                        <img class="card-img-top img-fluid" src="{{image}}" alt="Card image cap">
-			                        </a>
-		                        </div>
-		                        <div class="card-body">
-		                            <h4 class="card-title"><a href="/product/{{product_id}}">{{product_name}}</a></h4>
-		                            <ul class="list-inline product-meta">
-		    	                        <li class="list-inline-item">
-		    		                        <a href="/product/{{product_id}}"><i class="fa fa-folder-open-o"></i>{{category_name}}</a>
-		    	                        </li>
-		    	                        <li class="list-inline-item">
-		    		                        <a href="#"><i class="fa fa-calendar"></i>{{price}}</a>
-		    	                        </li>
-		                            </ul>
-		                            <p class="card-text">"{{description}}"</p>
-		                            <div class="product-ratings">
-		    	                        <ul class="list-inline">
-	                        	    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-                        		    	</ul>
-	                        	    </div>
-	                        	</div>
-                        	</div>
-                        </div>
-                    </div>
+						<div class="product-item bg-light">
+							<div class="card">
+
+								<div class="thumb-content">
+									<!-- <div class="price">$200</div> -->
+									<a href="/product/{{product_id}}">
+										<img class="card-img-top img-fluid" src="{{image}}" alt="Card image cap">
+									</a>
+								</div>
+								<div class="card-body">
+									<h4 class="card-title"><a href="/product/{{product_id}}">{{product_name}}</a></h4>
+									<ul class="list-inline product-meta">
+										<li class="list-inline-item">
+											<a href="/product/{{product_id}}"><i
+													class="fa fa-folder-open-o"></i>{{category_name}}</a>
+										</li>
+										<li class="list-inline-item">
+											<a href="#"><i class="fa fa-calendar"></i>{{price}}</a>
+										</li>
+									</ul>
+									<p class="card-text">"{{description}}"</p>
+									<div class="product-ratings">
+										<ul class="list-inline">
+											<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					{{/each}}
 				</div>
-			</div>						
-		</div>		
+			</div>
+		</div>
 	</div>
 </section>
 

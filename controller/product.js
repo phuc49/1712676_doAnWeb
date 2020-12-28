@@ -18,9 +18,9 @@ const all = async (req, res, next) => {
   /// phân trang
   let page = +req.query.page || 1;
   const limit = +req.query.page_size || 12;
-  const { category: category_id, name, price } = req.query;
-  console.log({ category: category_id, name, price });
-  const count = await model.count({ category_id, name, price });
+  const { category: category_id, name, price, discount } = req.query;
+  console.log({ category: category_id, name, price, discount });
+  const count = await model.count({ category_id, name, price, discount });
   lastPage = Math.ceil(count[0].sl / limit);
   qs.page = lastPage;
   const lastPageQs = queryString.stringify(qs);
@@ -44,6 +44,7 @@ const all = async (req, res, next) => {
     category_id,
     name,
     price,
+    discount
   });
   const dsl = await loai.all();
   res.render("dssp", {
