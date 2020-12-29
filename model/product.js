@@ -54,12 +54,7 @@ module.exports = {
 
 
     params.push(offset * limit, limit);
-console.log(`SELECT ${viewFields}
-FROM ${TABLE}
-WHERE 1 = 1 ${condition}
-ORDER BY ${order} 
-LIMIT ?,?`,
-params);
+
     return db.load(
       `SELECT ${viewFields}
        FROM ${TABLE}

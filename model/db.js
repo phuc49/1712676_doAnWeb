@@ -3,11 +3,11 @@ const util = require('util');
 require('dotenv').config();
 
 const pool = mysql.createPool({
-    host: process.env.host,
-    user: process.env.user,
-    password: process.env.password,
-    database: process.env.database,
-    connectionLimit: process.env.connectionLimit
+    host: process.env.db_host,
+    user: process.env.db_user,
+    password: process.env.db_password,
+    database: process.env.db_database,
+    connectionLimit: process.env.db_connectionLimit
 });
 
 const mysql_query = util.promisify(pool.query).bind(pool);
