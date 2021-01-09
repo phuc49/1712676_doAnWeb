@@ -2,7 +2,7 @@ const { query } = require("express");
 const queryString = require("query-string");
 
 const model = require("../model/product");
-const loai = require("../model/loai.model");
+const loai = require("../model/category");
 
 //const { param } = require('../routes/index.route');
 

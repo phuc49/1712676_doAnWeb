@@ -14,7 +14,8 @@ module.exports = {
 
     getCurrentDate: () =>{
         let today = new Date();
-        return (today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate()); 
+        let m = today.getMonth() + 1;
+        return (today.getFullYear() + '-' + m + '-' + today.getDate()); 
     },
 
     sendVerifiedMail: (user) =>{
@@ -33,10 +34,5 @@ module.exports = {
             html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
         }
         smtpTransport.sendMail(mailOptions);
-    },
-
-    // getVerifiedCode: () => {
-    //     const num = Math.floor(Math.random() * 100);
-
-    // }
+    }
 }

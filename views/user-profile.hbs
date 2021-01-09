@@ -12,16 +12,16 @@
 					<div class="widget user">
 						<!-- User Image -->
 						<div class="image d-flex justify-content-center">
-							<img src="images/user/user-thumb.jpg" alt="" class="">
+							<img src="{{image}}" alt="" class="">
 						</div>
 						<!-- User Name -->
-						<h5 class="text-center">Samanta Doe</h5>
+						<h5 class="text-center">{{name}}</h5>
 					</div>
 					<!-- Dashboard Links -->
 					<div class="widget dashboard-links">
 						<ul>
-							<li><a class="my-1 d-inline-block" href="">Savings Dashboard</a></li>
-							<li><a class="my-1 d-inline-block" href="">Saved Offer <span>(5)</span></a></li>
+							<li><a class="my-1 d-inline-block" href="">Giỏ hàng</a></li>
+							<li><a class="my-1 d-inline-block" href="">Đơn hàng <span>(5)</span></a></li>
 							<li><a class="my-1 d-inline-block" href="">Favourite Stores <span>(3)</span></a></li>
 							<li><a class="my-1 d-inline-block" href="">Recommended</a></li>
 						</ul>
@@ -33,71 +33,37 @@
 				
 				<!-- Edit Personal Info -->
 				<div class="row">
-					<div class="col-lg-6 col-md-6">
+					<div class="col-lg-9 col-md-9">
 						<div class="widget personal-info">
-							<h3 class="widget-header user">Edit Personal Information</h3>
-							<form action="#">
-								<!-- First Name -->
+							<h3 class="widget-header user">Chỉnh sửa thông tin cá nhân</h3>
+							<form method="POST"  onsubmit="return checkInfo()"  enctype="multipart/form-data">
+								
+								<!-- Name -->
 								<div class="form-group">
-									<label for="first-name">First Name</label>
-									<input type="text" class="form-control" id="first-name">
-								</div>
-								<!-- Last Name -->
-								<div class="form-group">
-									<label for="last-name">Last Name</label>
-									<input type="text" class="form-control" id="last-name">
+									<label for="last-name">Họ tên</label>
+									<input type="text" class="form-control" id="info-name" value="{{name}}" name="name">
 								</div>
 								<!-- File chooser -->
 								<div class="form-group choose-file d-inline-flex">
 									<i class="fa fa-user text-center px-3"></i>
-									<input type="file" class="form-control-file mt-2 pt-1" id="input-file">
+									<input type="file" accept=".jpg, .png, .gif, .jpeg" class="form-control-file mt-2 pt-1" id="input-file" name="image" >
 								 </div>
 								<!-- Comunity Name -->
 								<div class="form-group">
-									<label for="comunity-name">Comunity Name</label>
-									<input type="text" class="form-control" id="comunity-name">
+									<label for="comunity-name">Số điện thoại </label>
+									<input type="text" class="form-control" id="info-phone" value="{{phone_number}}" name="phone_number" >
 								</div>
 								<!-- Checkbox -->
-								<div class="form-check">
-								  <label class="form-check-label" for="hide-profile">
-									<input class="form-check-input mt-1" type="checkbox" value="" id="hide-profile">
-									Hide Profile from Public/Comunity
-								  </label>
-								</div>
 								<!-- Zip Code -->
 								<div class="form-group">
-									<label for="zip-code">Zip Code</label>
-									<input type="text" class="form-control" id="zip-code">
+									<label for="zip-code">Ngày sinh</label>
+									<input type="date" class="form-control" id="info-birthday" value="{{date_of_birth}}"  name="date_of_birth">
 								</div>
+								<p id="error-phone" class="error_msg">{{e}}</p>
 								<!-- Submit button -->
-								<button class="btn btn-transparent">Save My Changes</button>
+								<input type="submit" class="btn btn-transparent" value="Lưu thay đổi" >
 							</form>
 						</div>
-					</div>
-					<div class="col-lg-6 col-md-6">
-						<!-- Change Password -->
-					<div class="widget change-password">
-						<h3 class="widget-header user">Edit Password</h3>
-						<form action="#">
-							<!-- Current Password -->
-							<div class="form-group">
-								<label for="current-password">Current Password</label>
-								<input type="password" class="form-control" id="current-password">
-							</div>
-							<!-- New Password -->
-							<div class="form-group">
-								<label for="new-password">New Password</label>
-								<input type="password" class="form-control" id="new-password">
-							</div>
-							<!-- Confirm New Password -->
-							<div class="form-group">
-								<label for="confirm-password">Confirm New Password</label>
-								<input type="password" class="form-control" id="confirm-password">
-							</div>
-							<!-- Submit Button -->
-							<button class="btn btn-transparent">Change Password</button>
-						</form>
-					</div>
 					</div>
 					
 				</div>

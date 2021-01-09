@@ -1,13 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const passport = require("./passport");
+const session = require("express-session")
+
+require('dotenv').config();
 
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
-var loginRouter = require('./routes/login');
-
 var productRoute = require('./routes/product');
 
 var app = express();
@@ -21,11 +23,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//passport midlewares
+app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(passport.initialize());
+app.use(passport.session());
+//pass res.user to res.locals
+app.use(function (req, res, next) {
+  res.locals.user = req.user
+  next()
+})
 
+
+//routes
 app.use('/', indexRouter);
-app.use('/login', loginRouter);
 app.use('/users', usersRouter);
-
 app.use('/product',productRoute);
 
 

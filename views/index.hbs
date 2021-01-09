@@ -159,10 +159,13 @@
 			<div class="col-md-8">
 				<div class="content-holder">
 					<h2>Mua hàng ngay hôm nay để nhận nhiều ưu đãi</h2>
+					{{#if user}}
+					{{else}}
 					<ul class="list-inline mt-30">
 						<li class="list-inline-item"><a class="btn btn-main" href="login.html">Đăng nhập</a></li>
 						<li class="list-inline-item"><a class="btn btn-secondary" href="register.html">Đăng ký</a></li>
 					</ul>
+					{{/if}}
 				</div>
 			</div>
 		</div>
