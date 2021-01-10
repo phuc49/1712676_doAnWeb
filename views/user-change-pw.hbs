@@ -1,0 +1,28 @@
+<div class="login py-5 border-top-1">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 col-md-6">
+				<!-- Change Password -->
+				<div class="widget change-password">
+					<h3 class="widget-header user">Tạo lại mật khẩu</h3>
+					<form method="POST" onsubmit="return checkPw()">
+						<!-- New Password -->
+						<div class="form-group">
+							<label for="new-password">Mật khẩu mới</label>
+							<input type="password" class="form-control" id="new-pw" name="password">
+						</div>
+						<!-- Confirm New Password -->
+						<div class="form-group">
+							<label for="confirm-password">Nhập lại mật khẩu mới</label>
+							<input type="password" class="form-control" id="confirm-pw">
+						</div>
+						<p class="error_msg" id="error">{{error}}</p>
+						
+						<!-- Submit Button -->
+						<input type="submit" class="btn btn-transparent" value="Đổi mật khẩu">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

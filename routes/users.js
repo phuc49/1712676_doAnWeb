@@ -15,7 +15,13 @@ router.get('/verify', user.verify);
 router.get('/profile-info', customer.getCustomer);
 router.post('/profile-info', customer.editInfo);
 
-router.get('/profile-account', user.editAccount);
-router.post('/profile-account', user.changePassword);
+router.get('/profile-account', user.editAccountView);
+router.post('/profile-account', user.editAccount);
+
+router.get('/forget-password', function(req, res, next) { res.render('forget-password');});
+router.post('/forget-password', user.forgetPw);
+
+router.get('/change-password', function(req, res, next) { res.render('user-change-pw');});
+router.post('/change-password', user.changePassword);
 
 module.exports = router;

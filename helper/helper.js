@@ -30,8 +30,25 @@ module.exports = {
         link=process.env.HOST + ":" + process.env.PORT +"/users/verify?id=" + user.id + "&code=" + user.verified_code;
         mailOptions={
             to : user.email,
-            subject : "Please confirm your Email account",
-            html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
+            subject : "Xác thực email",
+            html : "Xin chào quý khách,<br> Quý khách vui lòng click vào link sau để xác thực tài khoản.<br><a href="+link+">Click vào đây</a>"
+        }
+        smtpTransport.sendMail(mailOptions);
+    },
+    sendChangePwMail: (user) =>{
+        var smtpTransport = nodemailer.createTransport({
+            service: "Gmail",
+            auth: {
+                user: process.env.gmail_username,
+                pass: process.env.gmail_password
+            }
+        });
+console.log(user.email);
+        link=process.env.HOST + ":" + process.env.PORT +"/users/change-password?id=" + user.id + "&code=" + user.verified_code;
+        mailOptions={
+            to : user.email,
+            subject : "Khôi phục mật khẩu",
+            html : "Xin chào quý khách,<br> Quý khách vui lòng click vào link sau để khôi phục mật khẩu.<br><a href="+link+">Click vào đây</a>"
         }
         smtpTransport.sendMail(mailOptions);
     }
