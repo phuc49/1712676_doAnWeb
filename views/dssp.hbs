@@ -53,26 +53,17 @@
 							{{/each}}
 						</ul>
 					</div>
-
-
 				</div>
 			</div>
 			<div class="col-md-9">
-
 				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Sắp xếp
 				</a>
-
 				<!-- Dropdown list -->
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="?{{qs}}&orderBy=mostPopular">Phổ biến nhất</a>
 					<a class="dropdown-item" href="?{{qs}}&orderBy=lowestPrice">Giá thấp nhất</a>
 					<a class="dropdown-item" href="?{{qs}}&orderBy=highestPrice">Giá cao nhất</a>
 				</div>
-
-
-
-
-
 				<div class="product-grid-list">
 					<div class="row mt-30">
 						{{#each dssp}}
@@ -118,8 +109,7 @@
 							</li>
 							{{#each pageList}}
 							{{#if active}}
-							<li class="page-item active"><a class="page-link"
-									href="?{{qs}}">{{page}}</a></li>
+							<li class="page-item active"><a class="page-link" href="?{{qs}}">{{page}}</a></li>
 							{{else}}
 							<li class="page-item"><a class="page-link" href="?{{qs}}">{{page}}</a>
 							</li>
@@ -135,6 +125,6 @@
 					</nav>
 				</div>
 			</div>
-
-
+		</div>
+	</div>
 </section>

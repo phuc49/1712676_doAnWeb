@@ -59,8 +59,11 @@ const all = async (req, res, next) => {
 
 
 const singleID = async (req, res, next) => {
+//lay thong tin san pham
   const product = await model.singleID(req.params.product_id);
-
+// lay dssp tuong tu
+  const dssp = await model.similarProduct(product[0].category_id);
+// phan trang binh luan
   const page = +req.query.page || 1;
   const limit = +req.query.page_size || 5;
   const count = await comments.count(req.params.product_id);
@@ -70,16 +73,16 @@ const singleID = async (req, res, next) => {
   for (let i = page - 1; i <= Math.min(page + 1, len) ; i++) {
     if (i > 0) pageList.push({ page: i, active: i === page });
   }
-
+// lay ds binh luan
   const cmt = await comments.all( page - 1, limit, req.params.product_id ) 
-
+// edit de hien thi binh lua
   for (let i = 0; i < cmt.length; i++){
     if(cmt[i].customer_id == null) cmt[i].name = cmt[i].customer_name;
     dateFormat.masks.hammerTime = "dd-mm-yyyy";
     cmt[i].created_date = dateFormat(cmt[i].created_date,"hammerTime");
   }
 
-  res.render("sp", {p: product[0], cmt,page, pageList, len});
+  res.render("sp", {p: product[0], cmt,page, pageList, len, dssp});
 };
 
 const addCmt = async (req, res, next) => {

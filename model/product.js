@@ -12,6 +12,7 @@ const viewFields = [
   "p.image",
   "c.id as category_id",
   "c.name as category_name",
+  "p.buys buys"
 ];
 
 module.exports = {
@@ -23,13 +24,21 @@ module.exports = {
       [productId]
     ),
 
-    
+  similarProduct: (category_id) =>
+    db.load(
+      `SELECT ${viewFields} 
+             FROM ${TABLE}
+             WHERE c.id = ?
+             ORDER BY buys DESC
+             LIMIT 3`,
+      [category_id]
+    ),
+
   top: () =>
     db.load(`SELECT ${viewFields}
              FROM ${TABLE}
              ORDER BY buys DESC
              LIMIT 20 `),
-
 
   all: (offset, limit, { name, category_id, price, discount, orderBy }) => {
     let condition = "";
@@ -42,15 +51,24 @@ module.exports = {
         `%${name}%`
       );
     }
-    condition = buildCondition(condition, params, ` AND category_id = ?`, category_id);
+    condition = buildCondition(
+      condition,
+      params,
+      ` AND category_id = ?`,
+      category_id
+    );
     condition = buildCondition(condition, params, ` AND price <= ?`, price);
-    condition = buildCondition(condition, params, ` AND discount >= ?`, discount);
+    condition = buildCondition(
+      condition,
+      params,
+      ` AND discount >= ?`,
+      discount
+    );
 
     var order = "p.buys DESC";
-    if(orderBy == "highestPrice"){
+    if (orderBy == "highestPrice") {
       order = "p.price DESC";
-    }
-    else if(orderBy == "lowestPrice"){
+    } else if (orderBy == "lowestPrice") {
       order = "p.price ASC";
     }
 
@@ -65,7 +83,6 @@ module.exports = {
       params
     );
   },
-
 
   count: ({ name, category_id, price, discount }) => {
     let condition = "";
@@ -85,7 +102,12 @@ module.exports = {
       category_id
     );
     condition = buildCondition(condition, params, ` AND price <= ?`, price);
-    condition = buildCondition(condition, params, ` AND discount >= ?`, discount);
+    condition = buildCondition(
+      condition,
+      params,
+      ` AND discount >= ?`,
+      discount
+    );
 
     return db.load(
       `SELECT COUNT(*) AS sl 

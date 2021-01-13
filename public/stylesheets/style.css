@@ -2708,3 +2708,11 @@ form textarea {
 .error_msg{
   color: red;
 }
+
+
+.mo-ta{
+  max-width: 75ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
