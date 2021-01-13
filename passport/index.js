@@ -8,12 +8,16 @@ passport.use(new LocalStrategy(
     const user = await model.checkCredential(username, password);
 
     if (!user) {
-      return done(null, false, { message: 'Incorrect username or password' });
+      return done(null, false, { message: 'Tên đăng nhập hoặc mật khẩu không đúng' });
+    }
+console.log(user);
+    if (user.role != 'khách hàng') {
+      return done(null, false, { message: 'Đây không phải là tài khoản khách hàng' });
     }
 
-    // if (user.role != 'khách hàng') {
-    //   return done(null, false, { message: 'You are not a customer' });
-    // }
+    if (user.status != 'đang hoạt động') {
+      return done(null, false, { message: 'Tài khoản của bạn chưa được kích hoạt' });
+    }
 
     return done(null, user);
 

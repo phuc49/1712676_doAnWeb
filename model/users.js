@@ -23,7 +23,7 @@ module.exports = {
     addUser: (entity) => db.add("users", entity),
     edit: (entity, id) => db.edit("users", entity, {id: id}),
     checkCredential: async (username, password) => {
-        const user = await db.load(`SELECT id, email, password, status
+        const user = await db.load(`SELECT id, email, password, status, role
                                     FROM ${TABLE}
                                     WHERE email = ?`, username);
 

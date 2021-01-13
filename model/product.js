@@ -22,6 +22,8 @@ module.exports = {
              WHERE p.id = ?`,
       [productId]
     ),
+
+    
   top: () =>
     db.load(`SELECT ${viewFields}
              FROM ${TABLE}
@@ -52,7 +54,6 @@ module.exports = {
       order = "p.price ASC";
     }
 
-
     params.push(offset * limit, limit);
 
     return db.load(
@@ -64,6 +65,8 @@ module.exports = {
       params
     );
   },
+
+
   count: ({ name, category_id, price, discount }) => {
     let condition = "";
     let params = [];

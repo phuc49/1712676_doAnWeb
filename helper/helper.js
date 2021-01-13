@@ -43,7 +43,7 @@ module.exports = {
                 pass: process.env.gmail_password
             }
         });
-console.log(user.email);
+
         link=process.env.HOST + ":" + process.env.PORT +"/users/change-password?id=" + user.id + "&code=" + user.verified_code;
         mailOptions={
             to : user.email,

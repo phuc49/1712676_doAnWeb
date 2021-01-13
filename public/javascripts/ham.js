@@ -131,3 +131,17 @@ function checkEmail() {
 
     return true;
 }
+
+function checkUserCmt()
+{
+    const user = document.getElementById("user").value;
+    const content = document.getElementById("content").value;
+    const name = document.getElementById("customer_name").value;
+    if(content == '') return false;
+    if(isNaN(user) && name == ''){
+        var e = document.getElementById("error");
+        e.textContent = "Vui lòng điền tên hoặc đăng nhập để thêm bình luận";
+        return false;
+    }
+    return true;
+}
