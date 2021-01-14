@@ -19,4 +19,12 @@ module.exports = {
              FROM ${TABLE}
              WHERE id = '${id}'`),
   edit: (entity, id) => db.edit("customers", entity, { id: id }),
+  getFull: (id) => {
+    return db.load(
+      `SELECT *
+       FROM customers
+       WHERE id = ?`,
+       id
+    );
+  },
 };

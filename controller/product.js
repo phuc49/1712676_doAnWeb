@@ -61,6 +61,7 @@ const all = async (req, res, next) => {
 const singleID = async (req, res, next) => {
 //lay thong tin san pham
   const product = await model.singleID(req.params.product_id);
+console.log(product[0]);
 // lay dssp tuong tu
   const dssp = await model.similarProduct(product[0].category_id);
 // phan trang binh luan
@@ -81,7 +82,7 @@ const singleID = async (req, res, next) => {
     dateFormat.masks.hammerTime = "dd-mm-yyyy";
     cmt[i].created_date = dateFormat(cmt[i].created_date,"hammerTime");
   }
-
+  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaa",product[0]);
   res.render("sp", {p: product[0], cmt,page, pageList, len, dssp});
 };
 

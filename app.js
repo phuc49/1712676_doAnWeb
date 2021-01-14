@@ -7,10 +7,12 @@ const passport = require("./passport");
 const session = require("express-session")
 
 require('dotenv').config();
-
-var indexRouter = require('./routes');
-var usersRouter = require('./routes/users');
-var productRoute = require('./routes/product');
+// route
+const indexRouter = require('./routes');
+const usersRouter = require('./routes/users');
+const productRoute = require('./routes/product');
+const cartRoute =  require('./routes/cart');
+const ordersRoute =  require('./routes/orders');
 
 var app = express();
 
@@ -38,6 +40,8 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/product',productRoute);
+app.use('/cart',cartRoute);
+app.use('/orders',ordersRoute);
 
 
 // catch 404 and forward to error handler
